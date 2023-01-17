@@ -2,8 +2,8 @@ import { Flex, Card, H3, Text, Caption, Button, Icon } from '../core'
 
 const Cards = () => {
   return (
-    <Flex gap="8px" wrap flex="0 1 calc(50% - 8px)" align="stretch">
-      <Card gap="16px" bg="grey">
+    <Flex gap="8px" fwrap flex="0 1 calc(50% - 8px)" align="stretch">
+      <Card gap="16px" color="grey">
         <H3>Title</H3>
         <Caption color="danger">Warning text</Caption>
         <Text>
@@ -14,7 +14,7 @@ const Cards = () => {
         </Text>
       </Card>
 
-      <Card gap="16px" bg="dark">
+      <Card gap="16px" color="dark">
         <H3 color="white" font="monospace">
           Title
         </H3>
@@ -28,7 +28,7 @@ const Cards = () => {
           harum eos magnam doloremque necessitatibus!
         </Text>
       </Card>
-      <Card bordered p="0">
+      <Card bordered p="0" color="primary">
         <img
           src="https://images.pexels.com/photos/14019566/pexels-photo-14019566.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
           alt="illustration"

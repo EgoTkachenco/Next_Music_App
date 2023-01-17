@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import styled from 'styled-components'
 import theme from '@/styles/theme'
-import { get_font, get_color } from '@/styles/utils'
+import { Font, Color } from '@/styles/utils'
 
-const ButtonCore = styled.button`
+interface ButtonCoreProps {
+  width: string
+  height: string
+  fontSize: string
+  padding: string
+  font: Font
+  color: Color
+}
+
+const ButtonCore = styled.button<ButtonCoreProps>`
   position: relative;
   background: none;
   border: none;
@@ -19,7 +28,7 @@ const ButtonCore = styled.button`
   gap: 8px;
   border-radius: 8px;
 
-  font-family: ${(props) => get_font(props.font)};
+  font-family: ${({ font }) => theme.fonts[font]};
   width: ${(props) => props.width || '100%'};
   height: ${(props) => props.height};
   font-size: ${(props) => props.fontSize};
@@ -27,6 +36,7 @@ const ButtonCore = styled.button`
 
   svg {
     cursor: pointer;
+    fill: ${({ color }) => theme.colors[color]} !important;
   }
 
   path {
@@ -39,16 +49,21 @@ const ButtonCore = styled.button`
   }
 `
 const ButtonFlatCore = styled(ButtonCore)`
-  background: ${(props) => props.color};
+  background: ${({ color }) => theme.colors[color]};
   color: #ffffff;
   font-weight: 600;
+
+  svg {
+    fill: #ffffff;
+  }
+
   &:hover {
     background: transparent;
-    border-color: ${(props) => props.color};
-    color: ${(props) => props.color};
+    border-color: ${({ color }) => theme.colors[color]};
+    color: ${({ color }) => theme.colors[color]};
 
-    path {
-      fill: ${(props) => props.color};
+    svg {
+      fill: ${({ color }) => theme.colors[color]};
     }
   }
 
@@ -57,30 +72,29 @@ const ButtonFlatCore = styled(ButtonCore)`
   }
 `
 const ButtonOutlineCore = styled(ButtonCore)`
-  border-color: ${(props) => props.color};
-  color: ${(props) => props.color};
+  border-color: ${({ color }) => theme.colors[color]};
+  color: ${({ color }) => theme.colors[color]};
   background: transparent;
   font-weight: 600;
 
   &:hover {
-    background: ${(props) => props.color};
+    background: ${({ color }) => theme.colors[color]};
     color: #ffffff;
 
-    path {
+    svg {
       fill: #ffffff;
     }
   }
   &:active {
     background: rgba(0, 0, 0, 0.1);
-    border-color: ${(props) => props.color};
-    color: ${(props) => props.color};
-    /* transform: scale(1.02); */
+    border-color: ${({ color }) => theme.colors[color]};
+    color: ${({ color }) => theme.colors[color]};
   }
 `
 const ButtonTextCore = styled(ButtonCore)`
   background: transparent;
   border-radius: 30px;
-  color: ${(props) => props.color};
+  color: ${({ color }) => theme.colors[color]};
   font-weight: 600;
   padding: 0;
   transition: all 0.1s;
@@ -93,7 +107,7 @@ const ButtonTextCore = styled(ButtonCore)`
     width: 0;
     height: 1px;
     transition: all 0.3s;
-    background: ${(props) => props.color};
+    background: ${({ color }) => theme.colors[color]};
   }
 
   &:hover {
@@ -105,7 +119,6 @@ const ButtonTextCore = styled(ButtonCore)`
     transform: scale(1.02);
   }
 `
-
 const CustomButton = styled(ButtonCore)`
   background: purple;
   color: #fff;
@@ -123,11 +136,11 @@ const CustomButton = styled(ButtonCore)`
   }
 `
 const IconButton = styled(ButtonCore)`
-  max-width: ${(props) => props.height};
-  min-width: ${(props) => props.height};
+  max-width: ${({ height }) => height};
+  min-width: ${({ height }) => height};
   padding: 0;
-  height: ${(props) => props.height};
-  background: ${(props) => props.color};
+  height: ${({ height }) => height};
+  background: ${({ color }) => theme.colors[color]};
   border-radius: 50%;
   svg {
     cursor: pointer;
@@ -138,11 +151,11 @@ const IconButton = styled(ButtonCore)`
 
   &:hover {
     background: transparent;
-    border-color: ${(props) => props.color};
-    color: ${(props) => props.color};
+    border-color: ${({ color }) => theme.colors[color]};
+    color: ${({ color }) => theme.colors[color]};
 
     path {
-      fill: ${(props) => props.color};
+      fill: ${({ color }) => theme.colors[color]};
     }
   }
 
@@ -150,38 +163,57 @@ const IconButton = styled(ButtonCore)`
     background: rgba(0, 0, 0, 0.1);
   }
 `
+
 // Variants for custom buttons
 const variants = {
   custom: CustomButton,
   icon: IconButton,
 }
 
-const getVariant = (variant) => variants[variant] || ButtonFlatCore
+enum ButtonVariants {
+  custom = 'custom',
+  icon = 'icon',
+}
 
-const getSize = (size = 'medium') => theme.buttons.sizes[size]
+interface ButtonProps {
+  variant?: ButtonVariants
+  color?: keyof typeof theme.colors
+  text?: boolean
+  outline?: boolean
+  font?: keyof typeof theme.fonts
+  children?: ReactNode
+  size?: keyof typeof theme.buttons.sizes
+  type: 'button' | 'submit'
+}
 
 const Button = React.forwardRef(function Button(
-  { variant, color, text, outline, font, children, ...props },
+  {
+    variant,
+    color = 'primary',
+    text,
+    outline,
+    font = 'monospace',
+    children,
+    size = 'medium',
+    type = 'button',
+  }: ButtonProps,
   ref
 ) {
-  const sizesProps = getSize(props.size)
-  delete props.size
+  let ButtonTemplate = ButtonFlatCore
 
-  let ButtonTemplate = ButtonCore
-  if (variant) ButtonTemplate = getVariant(variant)
+  if (variant) ButtonTemplate = variants[variant]
   else if (outline) ButtonTemplate = ButtonOutlineCore
   else if (text) ButtonTemplate = ButtonTextCore
-  else ButtonTemplate = ButtonFlatCore
 
   return (
     <ButtonCore
       ref={ref}
       as={ButtonTemplate}
-      {...props}
-      {...sizesProps}
-      color={get_color(color || 'primary')}
-      font={font || 'monospace'}
-      type={props.type || 'button'}
+      color={color}
+      font={font}
+      type={type}
+      // button size
+      {...theme.buttons.sizes[size]}
     >
       {children}
     </ButtonCore>

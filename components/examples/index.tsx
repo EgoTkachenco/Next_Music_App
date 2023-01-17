@@ -5,6 +5,7 @@ import Form from './Form'
 import Labels from './Labels'
 import Typographic from './Typographic'
 import Buttons from './Buttons'
+import Icons from './Icons'
 import styled from 'styled-components'
 
 const Examples = () => {
@@ -18,17 +19,22 @@ const Examples = () => {
         <Buttons />
       </Example>
 
-      <Example name="Forms">
-        <Form />
+      <Example name="Icons">
+        <Icons />
       </Example>
 
       <Example name="Cards">
         <Card />
       </Example>
 
+      {/* <Example name="Forms">
+        <Form />
+      </Example>
+
+
       <Example name="Labels">
         <Labels />
-      </Example>
+      </Example> */}
 
       {/* <Example name="Modal"></Example>
 

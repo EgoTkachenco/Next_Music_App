@@ -1,10 +1,10 @@
 import Flex from './Flex'
 import Card from './Card'
+import Icon from './Icon'
 import Button from './Button'
 import Chip from './Chip'
 import { H1, H2, H3, H4, H5, H6, Text, Caption, Link } from './Text'
 import { Input, Checkbox, Label, Radio, Select } from './Form'
-import Icon from './Icon'
 
 export {
   Flex,

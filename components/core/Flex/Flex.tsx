@@ -6,16 +6,16 @@ export interface FlexProps {
   align?: string
   justify?: string
   gap?: string
-  wrap?: boolean
+  fwrap: boolean
   width?: string
   flex?: string
-  p?: number
-  px?: number
-  py?: number
-  pl?: number
-  pr?: number
-  pt?: number
-  pb?: number
+  p?: string
+  px?: string
+  py?: string
+  pl?: string
+  pr?: string
+  pt?: string
+  pb?: string
 }
 
 const Flex = styled.div<FlexProps>`
@@ -24,9 +24,10 @@ const Flex = styled.div<FlexProps>`
   align-items: ${({ align }) => align || 'flex-start'};
   justify-content: ${({ justify }) => justify || 'flex-start'};
   gap: ${({ gap }) => gap || '0'};
-  flex-wrap: ${({ wrap }) => (wrap ? 'wrap' : 'unset')};
+  flex-wrap: ${({ fwrap }) => (fwrap ? 'wrap' : 'unset')};
   width: ${({ width }) => width || '100%'};
-  padding: ${(props) => get_padding_sizes(props)};
+  padding: ${({ p, px, py, pl, pr, pt, pb }) =>
+    get_padding_sizes({ p, px, py, pl, pr, pt, pb })};
 
   ${({ flex }) => (flex ? `& > * {flex: ${flex};}` : '')}
 `

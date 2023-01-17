@@ -59,6 +59,6 @@ module.exports = {
   card: {
     default_padding: '16px',
     default_radius: '8px',
-    default_shadow: 'box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;',
+    default_shadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
   },
 }
