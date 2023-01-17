@@ -1,3 +1,4 @@
+import React from 'react'
 import styled from 'styled-components'
 import theme from '@/styles/theme'
 import { Color } from '@/styles/utils'
@@ -28,6 +29,7 @@ interface IconProps {
   size?: string
   color?: Color
   onClick?: Function
+  style?: React.CSSProperties
 }
 
 const Icon = ({
@@ -35,6 +37,7 @@ const Icon = ({
   size = '16px',
   color = 'dark',
   onClick,
+  style,
 }: IconProps) => {
   return (
     <IconWrapper
@@ -42,6 +45,7 @@ const Icon = ({
       onClick={() => onClick && onClick()}
       color={theme.colors[color]}
       pointer={!!onClick}
+      style={style}
     >
       {ICONS[icon]()}
     </IconWrapper>

@@ -27,11 +27,11 @@ const Examples = () => {
         <Card />
       </Example>
 
-      {/* <Example name="Forms">
+      <Example name="Forms">
         <Form />
       </Example>
 
-
+      {/*
       <Example name="Labels">
         <Labels />
       </Example> */}
@@ -63,7 +63,7 @@ const Title = styled(Flex)`
   border-right: 2px solid #ccc;
 `
 
-const Example = ({ name, children }: { name: string; children: ReactNode }) => {
+const Example = ({ name, children }) => {
   return (
     <Row width="100%" align="stretch">
       <Title width="35%" justify="center" align="center">

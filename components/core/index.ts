@@ -3,8 +3,8 @@ import Card from './Card'
 import Icon from './Icon'
 import Button from './Button'
 import Chip from './Chip'
-import { H1, H2, H3, H4, H5, H6, Text, Caption, Link } from './Text'
-import { Input, Checkbox, Label, Radio, Select } from './Form'
+import { H1, H2, H3, H4, H5, H6, Text, Caption, Link, Label} from './Text'
+import { Input, Checkbox, Radio, Select } from './Form'
 
 export {
   Flex,

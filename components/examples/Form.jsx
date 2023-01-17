@@ -15,7 +15,7 @@ import { useState } from 'react'
 
 const Form = () => {
   return (
-    <Flex gap="16px" wrap flex="0 1 450px" justify="center">
+    <Flex gap="16px" fwrap flex="0 1 450px" justify="center">
       <LoginForm />
       <RegistrationForm />
     </Flex>
@@ -45,7 +45,8 @@ const LoginForm = () => {
       <Checkbox
         label={
           <Caption inline>
-            Погоджуюсь на <Link>правила використання сервісу</Link> ?
+            Погоджуюсь на
+            <Link color="primary">правила використання сервісу</Link> ?
           </Caption>
         }
       />

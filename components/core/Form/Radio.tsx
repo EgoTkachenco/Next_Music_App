@@ -1,23 +1,35 @@
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import theme from '@/styles/theme'
 import Flex from '../Flex'
-import Label from './Label'
-import { useState, useEffect } from 'react'
+import { Label } from '../Text'
+
+type RadioSize = keyof typeof theme.forms.radio.sizes
+
+interface RadioProps {
+  name?: string
+  value: string
+  onChange: (value: string) => void
+  label?: string | JSX.Element
+  options: [string] | []
+  direction: 'row' | 'column'
+  size: RadioSize
+}
 
 export default function Radio({
   name,
-  value,
+  value = '',
   onChange = () => {},
   label,
-  options,
+  options = [],
   direction = 'column',
   size = 'medium',
-}) {
+}: RadioProps) {
   const [state, setState] = useState('')
   useEffect(() => {
     setState(value)
   }, [value])
-  const handleChange = (newValue) => {
+  const handleChange = (newValue: string) => {
     setState(newValue)
     onChange(newValue)
   }
@@ -36,7 +48,14 @@ export default function Radio({
   )
 }
 
-const RadioElement = ({ value, label, onChange, size }) => {
+interface RadioElementProps {
+  value: boolean
+  label: string | JSX.Element
+  onChange: React.MouseEventHandler<HTMLDivElement>
+  size: RadioSize
+}
+
+const RadioElement = ({ value, label, onChange, size }: RadioElementProps) => {
   return (
     <Flex align="center" onClick={onChange} gap="8px">
       <Box size={size}>
@@ -49,11 +68,11 @@ const RadioElement = ({ value, label, onChange, size }) => {
   )
 }
 
-const Box = styled.div`
+const Box = styled.div<{ size: RadioSize }>`
   border: 1px solid ${theme.colors.dark};
   border-radius: 50%;
-  width: ${(props) => theme.forms.radio.sizes[props.size]};
-  height: ${(props) => theme.forms.radio.sizes[props.size]};
+  width: ${({ size }) => theme.forms.radio.sizes[size]};
+  height: ${({ size }) => theme.forms.radio.sizes[size]};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -65,11 +84,11 @@ const Box = styled.div`
     border-color: ${theme.colors.primary};
   }
 `
-const Value = styled.div`
+const Value = styled.div<{ active: boolean }>`
   border-radius: 50%;
-  width: ${(props) => (props.active ? '100%' : '0')};
-  height: ${(props) => (props.active ? '100%' : '0')};
+  width: ${({ active }) => (active ? '100%' : '0')};
+  height: ${({ active }) => (active ? '100%' : '0')};
   transition: all 0.3s;
-  background: ${(props) =>
-    props.active ? theme.colors.primary : 'transparent'};
+  background: ${({ active }) =>
+    active ? theme.colors.primary : 'transparent'};
 `

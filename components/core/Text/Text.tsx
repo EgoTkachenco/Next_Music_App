@@ -9,7 +9,6 @@ interface TextProps {
 }
 
 interface VariantTextProps extends TextProps {
-  type: TextVariant
   inline?: boolean
 }
 
@@ -88,4 +87,14 @@ export const Text = styled.div.attrs(defaultProps)<VariantTextProps>`
     ${variantStyles('text')}
     display: ${({ inline }) => (inline ? 'inline' : 'block')};
   }
+`
+
+interface LabelProps extends TextProps {
+  caption?: boolean
+}
+
+export const Label = styled.label.attrs(defaultProps)<LabelProps>`
+  ${({ font, color, align }) => defaultStyles({ font, color, align })}
+  ${({ caption }) =>
+    caption ? variantStyles('caption') : variantStyles('text')}
 `

@@ -3,45 +3,62 @@ import InputError from './InputError'
 import Flex from '../Flex'
 import theme from '@/styles/theme'
 import { useState, useEffect } from 'react'
-import TextField from './TextField'
+import TextField, { TextFieldVariant } from './TextField'
+
+interface InputProps {
+  id?: string
+  name?: string
+  value: string
+  onChange?: (value: string) => void
+  placeholder?: string
+  error?: string
+  type?: 'text' | 'password'
+  isRead?: boolean
+
+  variant: TextFieldVariant
+  rightSlot?: JSX.Element
+  leftSlot?: JSX.Element
+}
 
 export default function Input({
   id,
   name,
-  value,
+  value = '',
   onChange = () => {},
   placeholder,
   error,
   rightSlot,
   leftSlot,
   type,
-  validate = () => true,
   isRead,
   variant,
-}) {
-  const [state, setState] = useState({ value: '', focused: false })
+}: InputProps) {
+  const [state, setState] = useState('')
   useEffect(() => {
-    setState({ ...state, value })
+    setState(value)
   }, [value])
-  const handleChange = (newValue) => {
-    setState({ ...state, value: newValue })
+
+  const handleChange = (newValue: string) => {
+    setState(newValue)
     onChange(newValue)
   }
-  const onFocus = () => setState({ ...state, focused: true })
-  const onBlur = () => setState({ ...state, focused: false })
+
+  const [focused, setFocused] = useState(false)
+  const onFocus = () => setFocused(true)
+  const onBlur = () => setFocused(false)
 
   return (
     <Flex direction="column">
       <TextField
         type={variant}
-        focused={state.focused}
+        focused={focused}
         leftSlot={leftSlot}
         rightSlot={rightSlot}
       >
         <InputField
           id={id}
           name={name}
-          value={value}
+          value={state}
           onChange={(e) => handleChange(e.target.value)}
           placeholder={placeholder}
           type={type}

@@ -5,30 +5,44 @@ import Flex from '../Flex'
 import Icon from '../Icon'
 import theme from '@/styles/theme'
 import { useState, useEffect } from 'react'
-import TextField from './TextField'
+import TextField, { TextFieldVariant } from './TextField'
 import { InputField } from './Input'
 import InputError from './InputError'
+
+interface SelectProps {
+  id?: string
+  name?: string
+  value: string
+  onChange: (value: string) => void
+  placeholder?: string
+  options: [string] | []
+  error?: string
+  isRead?: boolean
+
+  variant: TextFieldVariant
+  rightSlot?: JSX.Element
+  leftSlot?: JSX.Element
+}
 
 const Select = ({
   id,
   name,
-  value,
+  value = '',
   onChange = () => {},
   placeholder,
-  options,
-  isRead,
-  style,
-  variant,
-  leftSlot,
-  rightSlot,
+  options = [],
   error,
-}) => {
-  const [show, setShow] = useState()
+  isRead,
+  variant,
+  rightSlot,
+  leftSlot,
+}: SelectProps) => {
+  const [show, setShow] = useState(false)
   const [state, setState] = useState(value)
   useEffect(() => {
     setState(value)
   }, [value])
-  const handleClick = (option) => {
+  const handleClick = (option: string) => {
     setState(option)
     onChange(option)
     setShow(false)
@@ -81,14 +95,14 @@ const Select = ({
 
 export default Select
 
-const Menu = styled.div`
+const Menu = styled.div<{ show: boolean }>`
   position: absolute;
   width: 100%;
   max-width: 100%;
   top: calc(100% + 2px);
   left: 0;
   z-index: 100;
-  display: ${(props) => (props.show ? 'flex' : 'none')};
+  display: ${({ show }) => (show ? 'flex' : 'none')};
   flex-direction: column;
   gap: 2px;
   background-color: white;

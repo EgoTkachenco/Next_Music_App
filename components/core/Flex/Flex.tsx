@@ -1,3 +1,4 @@
+import React from 'react'
 import styled from 'styled-components'
 import { get_padding_sizes } from '@/styles/utils'
 
@@ -6,7 +7,7 @@ export interface FlexProps {
   align?: string
   justify?: string
   gap?: string
-  fwrap: boolean
+  fwrap?: boolean
   width?: string
   flex?: string
   p?: string
@@ -16,6 +17,8 @@ export interface FlexProps {
   pr?: string
   pt?: string
   pb?: string
+  onClick?: React.MouseEventHandler<HTMLDivElement>
+  ref?: React.MutableRefObject<undefined>
 }
 
 const Flex = styled.div<FlexProps>`
