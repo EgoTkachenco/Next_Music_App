@@ -184,6 +184,7 @@ interface ButtonProps {
   children?: ReactNode
   size?: keyof typeof theme.buttons.sizes
   type: 'button' | 'submit'
+  onClick?: (event: MouseEvent) => void
 }
 
 const Button = React.forwardRef(function Button(
@@ -196,6 +197,7 @@ const Button = React.forwardRef(function Button(
     children,
     size = 'medium',
     type = 'button',
+    onClick = () => {},
   }: ButtonProps,
   ref
 ) {
@@ -214,6 +216,7 @@ const Button = React.forwardRef(function Button(
       type={type}
       // button size
       {...theme.buttons.sizes[size]}
+      onClick={onClick}
     >
       {children}
     </ButtonCore>

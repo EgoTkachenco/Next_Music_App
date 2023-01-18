@@ -6,6 +6,7 @@ import Labels from './Labels'
 import Typographic from './Typographic'
 import Buttons from './Buttons'
 import Icons from './Icons'
+import Translations from './Translations'
 import styled from 'styled-components'
 
 const Examples = () => {
@@ -21,6 +22,10 @@ const Examples = () => {
 
       <Example name="Icons">
         <Icons />
+      </Example>
+
+      <Example name="Translations">
+        <Translations />
       </Example>
 
       <Example name="Cards">

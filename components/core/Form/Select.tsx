@@ -1,10 +1,10 @@
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import _ from 'lodash'
 import { useClickOutside } from 'hooks'
 import Flex from '../Flex'
 import Icon from '../Icon'
 import theme from '@/styles/theme'
-import { useState, useEffect } from 'react'
 import TextField, { TextFieldVariant } from './TextField'
 import { InputField } from './Input'
 import InputError from './InputError'
@@ -47,7 +47,7 @@ const Select = ({
     onChange(option)
     setShow(false)
   }
-  const ref = useClickOutside(() => setShow(false))
+  const ref = useClickOutside<HTMLDivElement>(() => setShow(false))
 
   return (
     <Flex direction="column" ref={ref} style={{ position: 'relative' }}>
