@@ -47,7 +47,7 @@ const Select = ({
     onChange(option)
     setShow(false)
   }
-  const ref = useClickOutside<HTMLDivElement>(() => setShow(false))
+  const ref = useClickOutside<HTMLElement>(() => setShow(false))
 
   return (
     <Flex direction="column" ref={ref} style={{ position: 'relative' }}>

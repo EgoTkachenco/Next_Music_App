@@ -17,8 +17,9 @@ export interface FlexProps {
   pr?: string
   pt?: string
   pb?: string
-  onClick?: React.MouseEventHandler<HTMLDivElement>
-  ref?: React.MutableRefObject<HTMLDivElement>
+  onClick?: React.MouseEventHandler<HTMLElement>
+  // ref?: React.MutableRefObject<any>
+  ref?: any
 }
 
 const Flex = styled.div<FlexProps>`

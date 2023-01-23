@@ -18,7 +18,7 @@ const HomeView = () => {
           </Text>
           <Pad />
           <Text color="white">
-            After playing with these boxes for a while, you'll discover certain
+            After playing with these boxes for a while, you`ll discover certain
             combinations that you like. Many types of music are created in
             exactly this way — by mixing and matching small musical ideas to
             make interesting combinations, and then changing those combinations
