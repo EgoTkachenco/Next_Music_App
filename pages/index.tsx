@@ -1,4 +1,4 @@
-import ExamplesView from '@/components/views/Examples'
-export { getStaticProps } from '@/components/views/Examples'
+import HomeView from '@/components/views/Home'
+export { getStaticProps } from '@/components/views/Home'
 
-export default ExamplesView
+export default HomeView

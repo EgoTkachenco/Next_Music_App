@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Drum",
+    "sounds": [
+      { "url": "/samples/drum/Drums1.ogg", "duration": "1m" },
+      { "url": "/samples/drum/Drums2.ogg", "duration": "1m" },
+      { "url": "/samples/drum/Drums3.ogg", "duration": "2m" },
+      { "url": "/samples/drum/Drums4.ogg", "duration": "1m" }
+    ]
+  },
+  {
+    "name": "Bass",
+    "sounds": [
+      { "url": "/samples/bass/Bass1.ogg", "duration": "2m" },
+      { "url": "/samples/bass/Bass2.ogg", "duration": "2m" },
+      { "url": "/samples/bass/Bass3.ogg", "duration": "2m" },
+      { "url": "/samples/bass/Bass4.ogg", "duration": "2m" }
+    ]
+  },
+  {
+    "name": "Chords",
+    "sounds": [
+      { "url": "/samples/chords/Chords1.ogg", "duration": "2m" },
+      { "url": "/samples/chords/Chords2.ogg", "duration": "1m" },
+      { "url": "/samples/chords/Chords3.ogg", "duration": "2m" },
+      { "url": "/samples/chords/Chords4.ogg", "duration": "2m" }
+    ]
+  },
+  {
+    "name": "Melodies",
+    "sounds": [
+      { "url": "/samples/melodies/Melodies1.ogg", "duration": "2m" },
+      { "url": "/samples/melodies/Melodies2.ogg", "duration": "4m" },
+      { "url": "/samples/melodies/Melodies3.ogg", "duration": "4m" },
+      { "url": "/samples/melodies/Melodies4.ogg", "duration": "4m" }
+    ]
+  }
+]
