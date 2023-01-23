@@ -22,6 +22,7 @@ const SamplerPad = () => {
           sound.player = new Tone.Player(sound.url).toDestination()
           sound.player.loop = true
           sound.player.loopStart = 0
+          sound.player.volume.value = -5
           return sound
         })
         pack.activeSound = null
@@ -34,11 +35,12 @@ const SamplerPad = () => {
       // Turn off all sounds
       packs.forEach((pack) => {
         pack.sounds.forEach((sound) => {
-          sound.player.unsync().stop()
+          sound.player.unsync().stop(0)
         })
       })
       setPacks(null)
       // Turn of transport
+      Tone.Transport.cancel()
       Tone.Transport.stop()
     }
   }, [])
