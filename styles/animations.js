@@ -1,14 +1,13 @@
 import { keyframes } from 'styled-components'
 
-export const checkbox_done = keyframes`
+export const pendingButton = keyframes`
 	0% {
-		width: 0;
-		height: 0;
+		opacity: 1;
 	}
 	50% {
-		height: 25%;
+		opacity: 0.5;
 	}
 	100% {
-		width: 50%;
+		opacity: 1;
 	}
 `

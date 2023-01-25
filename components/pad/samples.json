@@ -27,7 +27,7 @@
     ]
   },
   {
-    "name": "Melodies",
+    "name": "Melody",
     "sounds": [
       { "url": "/samples/melodies/Melodies1.ogg", "duration": "2m" },
       { "url": "/samples/melodies/Melodies2.ogg", "duration": "4m" },

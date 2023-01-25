@@ -13,7 +13,7 @@ module.exports = {
     h6: { size: '18px', height: '22px', weight: '500' },
     text: { size: '16px', height: '19px', weight: '400' },
     caption: { size: '13px', height: '16px', weight: '400' },
-    link: { size: '13px', height: '16px', weight: '400' },
+    link: { size: '16px', height: '19px', weight: '400' },
   },
   colors: {
     primary: '#3A86FF',
@@ -22,7 +22,7 @@ module.exports = {
     danger: '#F21B3F',
     gray: '#7B7D8A',
     grey: '#DADFF7',
-    dark: '#232C33',
+    dark: '#03001C',
     white: '#FFFFFF',
     yellow: '#F3D34A',
   },

@@ -137,9 +137,9 @@ const SamplerPad = () => {
     <PadWrapper>
       {packs.map((pack, i) => (
         <PadColumn key={pack.name}>
-          <H5 align="center" color="white" font="monospace">
+          <PadColumnTitle align="center" color="white" font="monospace">
             {pack.name}
-          </H5>
+          </PadColumnTitle>
           {pack.sounds.map((sound, j) => (
             <PadButton
               key={`${i}${j}`}
@@ -158,7 +158,7 @@ const SamplerPad = () => {
 export default SamplerPad
 
 const PadWrapper = styled.div`
-  max-width: 600px;
+  max-width: 500px;
   width: 100%;
   margin: 0 auto;
   display: flex;
@@ -169,4 +169,11 @@ const PadColumn = styled.div`
   flex-direction: column;
   gap: 2px;
   flex: 1 1;
+`
+
+const PadColumnTitle = styled(H5)`
+  @media (max-width: 600px) {
+    font-size: 16px;
+    line-height: 120%;
+  }
 `
