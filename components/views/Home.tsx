@@ -12,7 +12,7 @@ const HomeView = () => {
       <Head>{renderMetadata({})}</Head>
       <Layout>
         <Wrapper gap="32px">
-          <Flex gap="16px" direction="column" width="500px">
+          <TextBox gap="16px" direction="column">
             <H2 color="white">Web Music Pad</H2>
             <Text color="white">
               Each one box below contains a small piece of music. Click a box to
@@ -24,7 +24,7 @@ const HomeView = () => {
               created in exactly this way — by mixing and matching small musical
               ideas to make interesting combinations.
             </Text>
-          </Flex>
+          </TextBox>
           <Pad />
         </Wrapper>
       </Layout>
@@ -45,4 +45,8 @@ const Wrapper = styled(Flex)`
   @media (max-width: 800px) {
     flex-direction: column;
   }
+`
+
+const TextBox = styled(Flex)`
+  max-width: 500px;
 `

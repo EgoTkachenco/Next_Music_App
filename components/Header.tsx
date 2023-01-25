@@ -31,4 +31,5 @@ const Content = styled.div`
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid ${theme.colors.white};
+  padding: 0 16px;
 `
