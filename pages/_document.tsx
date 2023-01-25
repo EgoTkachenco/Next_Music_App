@@ -5,6 +5,7 @@ import Document, {
   NextScript,
   DocumentContext,
 } from 'next/document'
+import Script from 'next/script'
 import { ServerStyleSheet } from 'styled-components'
 
 export default class MyDocument extends Document {
@@ -46,6 +47,25 @@ export default class MyDocument extends Document {
           <link
             href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=PT+Serif:wght@400;700&family=Source+Code+Pro:wght@400;500&display=swap"
             rel="stylesheet"
+          />
+          {/* Google tag (gtag.js) */}
+          <Script
+            strategy="afterInteractive"
+            src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"
+          />
+          <Script
+            id="google-analytics"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `
+							window.dataLayer = window.dataLayer || [];
+							function gtag(){dataLayer.push(arguments);}
+							gtag('js', new Date());
+							gtag('config', 'G-BLMKJ5R8DG', {
+							page_path: window.location.pathname,
+							});
+							`,
+            }}
           />
         </Head>
         <body>
